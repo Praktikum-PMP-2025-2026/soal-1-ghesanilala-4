@@ -2,7 +2,7 @@
  *   Modul               : 5
  *   Hari dan Tanggal    : 13 MEI 2026
  *   Nama (NIM)          : NAJWA GHAYSANI ATHAYA ARDYANTO (13224023)
- *   Nama File           : soal2.c
+ *   Nama File           : soal1.c
  *   Deskripsi           : membuat program dimana print semua kemungkinan kombinasi simbol () yang sesuai dan benar. dimana user masukan input
  * berupa n pasang () lalu outputnya akan menunjukkan semua kombinasi yang memungkinkan dan totalnya ada berapa kombinasi.
  * 
@@ -13,8 +13,8 @@
 #include <string.h>
 
 char** cekkombinasi(int x, int* returnSize){
-    int left, right, cap = 100, ctr = 0;
-    char *stack = malloc(2 * x + 1);
+    int left, right, cap = 500, ctr = 0;
+    char *stack = malloc(2 * x + 1);  //pake stack
     char **parentheses = malloc(cap * sizeof(char *));
 
     char *p = stack;
@@ -40,7 +40,7 @@ char** cekkombinasi(int x, int* returnSize){
             }
         } 
         else{
-            /* forward */
+            // forward
             while (left < x){
                 *p++ = '(';
                 left++;
@@ -56,11 +56,11 @@ char** cekkombinasi(int x, int* returnSize){
     return parentheses;
 }
 
-int catalanRecursief(int n) {
+int catalan(int n) {
   if (n == 0) {
     return 1;
   } else {
-    return ((2.0 * ((2 * n) - 1)) / (n + 1)) * (catalanRecursief(n - 1));
+    return ((2.0 * ((2 * n) - 1)) / (n + 1)) * (catalan(n - 1));
   }
 }
 
@@ -75,7 +75,7 @@ int main(){
     int n, ctr;
     scanf("%d", &n);
     printparenthese(n, ctr);
-    printf("TOTAL %d\n", catalanRecursief(n));
+    printf("TOTAL %d\n", catalan(n));
     return 0;
 }
 
