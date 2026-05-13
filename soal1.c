@@ -13,6 +13,9 @@
 #include <string.h>
 
 char** cekkombinasi(int x, int* returnSize){
+    if(x==0){
+        return 0;
+    }
     int left, right, cap = 500, ctr = 0;
     char *stack = malloc(2 * x + 1);  //pake stack
     char **parentheses = malloc(cap * sizeof(char *));
